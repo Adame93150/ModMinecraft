@@ -1,5 +1,6 @@
 package com.bettermobsia.mixin;
 
+import com.bettermobsia.goal.AlertNearbyZombiesGoal;
 import com.bettermobsia.goal.CustomBreakDoorGoal;
 
 import net.minecraft.entity.EntityType;
@@ -32,5 +33,8 @@ public abstract class ZombieEntityMixin extends MobEntity {
 
         // Casse les portes en toute difficulté
         this.goalSelector.add(4, new CustomBreakDoorGoal((ZombieEntity)(Object)this));
+        
+        this.goalSelector.add(5, new AlertNearbyZombiesGoal((ZombieEntity)(Object)this));
+
     }
 }
