@@ -1,0 +1,20 @@
+{
+  "mappings": {
+    "com/bettermobsia/mixin/ExampleMixin": {
+      "loadWorld": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
+    },
+    "com/bettermobsia/mixin/ZombieEntityMixin": {
+      "initGoals": "Lnet/minecraft/class_1642;method_5959()V"
+    }
+  },
+  "data": {
+    "named:intermediary": {
+      "com/bettermobsia/mixin/ExampleMixin": {
+        "loadWorld": "Lnet/minecraft/server/MinecraftServer;method_3735()V"
+      },
+      "com/bettermobsia/mixin/ZombieEntityMixin": {
+        "initGoals": "Lnet/minecraft/class_1642;method_5959()V"
+      }
+    }
+  }
+}
