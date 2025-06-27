@@ -1,10 +1,12 @@
 package com.bettermobsia.mixin;
 
+import com.bettermobsia.goal.CustomBreakDoorGoal;
+
 import net.minecraft.entity.EntityType;
+import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.entity.mob.MobEntity;
 import net.minecraft.entity.mob.ZombieEntity;
 import net.minecraft.entity.passive.ChickenEntity;
-import net.minecraft.entity.ai.goal.ActiveTargetGoal;
 import net.minecraft.world.World;
 
 import org.spongepowered.asm.mixin.Mixin;
@@ -21,11 +23,14 @@ public abstract class ZombieEntityMixin extends MobEntity {
 
     @Inject(method = "initGoals", at = @At("TAIL"))
     private void injectCustomGoals(CallbackInfo ci) {
-        // Ajoute une cible pour que les zombies attaquent les poulets
+        // Attaque les poulets
         this.targetSelector.add(3, new ActiveTargetGoal<>(
             (MobEntity)(Object)this,
             ChickenEntity.class,
             true
         ));
+
+        // Casse les portes en toute difficulté
+        this.goalSelector.add(4, new CustomBreakDoorGoal((ZombieEntity)(Object)this));
     }
 }
